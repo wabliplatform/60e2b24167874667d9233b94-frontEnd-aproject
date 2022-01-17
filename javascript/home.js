@@ -1,4 +1,6 @@
-let apiMyprojectsApi = new TempApi.MyprojectsApi();import TempApi from '../src/index';window.onload = () => {apiMyprojectsApi.getAllmyprojects((error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const subDataElements = document.getElementById("in3ic").querySelectorAll( "[dataitem='true']" );
+let apiMyprojectsApi = new TempApi.MyprojectsApi();import TempApi from '../src/index';document.getElementById('iolui').onclick = (event) => {
+    event.preventDefault();
+    { location.href= '/create';}};window.onload = () => {apiMyprojectsApi.getAllmyprojects((error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const subDataElements = document.getElementById("in3ic").querySelectorAll( "[dataitem='true']" );
   data.forEach((item,i) => {
     if(subDataElements.length > i)
       {
