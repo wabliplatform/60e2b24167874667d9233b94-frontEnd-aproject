@@ -30,10 +30,11 @@ class Myprojects {
      * @param pabstract {String} 
      * @param pdescription {String} 
      * @param pga {String} 
+     * @param pwebsite {String} 
      */
-    constructor(pimage, ptitle, pstart, pend, pduration, pabstract, pdescription, pga) { 
+    constructor(pimage, ptitle, pstart, pend, pduration, pabstract, pdescription, pga, pwebsite) { 
         
-        Myprojects.initialize(this, pimage, ptitle, pstart, pend, pduration, pabstract, pdescription, pga);
+        Myprojects.initialize(this, pimage, ptitle, pstart, pend, pduration, pabstract, pdescription, pga, pwebsite);
     }
 
     /**
@@ -41,7 +42,7 @@ class Myprojects {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, pimage, ptitle, pstart, pend, pduration, pabstract, pdescription, pga) { 
+    static initialize(obj, pimage, ptitle, pstart, pend, pduration, pabstract, pdescription, pga, pwebsite) { 
         obj['pimage'] = pimage;
         obj['ptitle'] = ptitle;
         obj['pstart'] = pstart;
@@ -50,6 +51,7 @@ class Myprojects {
         obj['pabstract'] = pabstract;
         obj['pdescription'] = pdescription;
         obj['pga'] = pga;
+        obj['pwebsite'] = pwebsite;
     }
 
     /**
@@ -89,6 +91,9 @@ class Myprojects {
             }
             if (data.hasOwnProperty('pga')) {
                 obj['pga'] = ApiClient.convertToType(data['pga'], 'String');
+            }
+            if (data.hasOwnProperty('pwebsite')) {
+                obj['pwebsite'] = ApiClient.convertToType(data['pwebsite'], 'String');
             }
         }
         return obj;
@@ -141,6 +146,11 @@ Myprojects.prototype['pdescription'] = undefined;
  * @member {String} pga
  */
 Myprojects.prototype['pga'] = undefined;
+
+/**
+ * @member {String} pwebsite
+ */
+Myprojects.prototype['pwebsite'] = undefined;
 
 
 

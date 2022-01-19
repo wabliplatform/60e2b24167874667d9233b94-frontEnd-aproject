@@ -108,6 +108,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property pwebsite (base name: "pwebsite")', function() {
+      // uncomment below and update the code to test the property pwebsite
+      //var instance = new TempApi.Myprojects();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));
