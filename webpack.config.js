@@ -7,7 +7,6 @@ module.exports = {
 	'view' : './javascript/view.js',
 	'update' : './javascript/update.js',
 	'Page5' : './javascript/Page5.js',
-	'Page6' : './javascript/Page6.js',
 },
   output: {
     path: path.resolve(__dirname, 'dist'),
