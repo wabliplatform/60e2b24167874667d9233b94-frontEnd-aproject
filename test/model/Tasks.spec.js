@@ -84,6 +84,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property tdescription (base name: "tdescription")', function() {
+      // uncomment below and update the code to test the property tdescription
+      //var instance = new TempApi.Tasks();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

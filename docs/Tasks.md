@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **sdate** | **Number** |  | 
 **edate** | **Number** |  | 
 **vpms** | **Number** |  | 
+**tdescription** | **String** |  | 
 
 

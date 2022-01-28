@@ -26,10 +26,11 @@ class Tasks {
      * @param sdate {Number} 
      * @param edate {Number} 
      * @param vpms {Number} 
+     * @param tdescription {String} 
      */
-    constructor(tname, sdate, edate, vpms) { 
+    constructor(tname, sdate, edate, vpms, tdescription) { 
         
-        Tasks.initialize(this, tname, sdate, edate, vpms);
+        Tasks.initialize(this, tname, sdate, edate, vpms, tdescription);
     }
 
     /**
@@ -37,11 +38,12 @@ class Tasks {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, tname, sdate, edate, vpms) { 
+    static initialize(obj, tname, sdate, edate, vpms, tdescription) { 
         obj['tname'] = tname;
         obj['sdate'] = sdate;
         obj['edate'] = edate;
         obj['vpms'] = vpms;
+        obj['tdescription'] = tdescription;
     }
 
     /**
@@ -69,6 +71,9 @@ class Tasks {
             }
             if (data.hasOwnProperty('vpms')) {
                 obj['vpms'] = ApiClient.convertToType(data['vpms'], 'Number');
+            }
+            if (data.hasOwnProperty('tdescription')) {
+                obj['tdescription'] = ApiClient.convertToType(data['tdescription'], 'String');
             }
         }
         return obj;
@@ -101,6 +106,11 @@ Tasks.prototype['edate'] = undefined;
  * @member {Number} vpms
  */
 Tasks.prototype['vpms'] = undefined;
+
+/**
+ * @member {String} tdescription
+ */
+Tasks.prototype['tdescription'] = undefined;
 
 
 
