@@ -14,7 +14,9 @@
 
 import ApiClient from './ApiClient';
 import Myprojects from './model/Myprojects';
+import Tasks from './model/Tasks';
 import MyprojectsApi from './api/MyprojectsApi';
+import TasksApi from './api/TasksApi';
 
 
 /**
@@ -62,10 +64,22 @@ export {
     Myprojects,
 
     /**
+     * The Tasks model constructor.
+     * @property {module:model/Tasks}
+     */
+    Tasks,
+
+    /**
     * The MyprojectsApi service constructor.
     * @property {module:api/MyprojectsApi}
     */
-    MyprojectsApi
+    MyprojectsApi,
+
+    /**
+    * The TasksApi service constructor.
+    * @property {module:api/TasksApi}
+    */
+    TasksApi
 };
 
 export default {
@@ -82,8 +96,20 @@ export default {
     Myprojects,
 
     /**
+     * The Tasks model constructor.
+     * @property {module:model/Tasks}
+     */
+    Tasks,
+
+    /**
     * The MyprojectsApi service constructor.
     * @property {module:api/MyprojectsApi}
     */
-    MyprojectsApi
+    MyprojectsApi,
+
+    /**
+    * The TasksApi service constructor.
+    * @property {module:api/TasksApi}
+    */
+    TasksApi
 };

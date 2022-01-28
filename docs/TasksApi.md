@@ -1,20 +1,20 @@
-# TempApi.MyprojectsApi
+# TempApi.TasksApi
 
 All URIs are relative to *http://83.212.100.226:3001/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createmyprojects**](MyprojectsApi.md#createmyprojects) | **POST** /myprojects | Creates the data
-[**deletemyprojects**](MyprojectsApi.md#deletemyprojects) | **DELETE** /myprojects/{myprojectsId} | Delete the element
-[**getAllmyprojects**](MyprojectsApi.md#getAllmyprojects) | **GET** /myprojects/getAll | Get all the data
-[**getmyprojects**](MyprojectsApi.md#getmyprojects) | **GET** /myprojects/{myprojectsId} | Get the element
-[**updatemyprojects**](MyprojectsApi.md#updatemyprojects) | **PUT** /myprojects/{myprojectsId} | Updates the element
+[**createtasks**](TasksApi.md#createtasks) | **POST** /tasks | Creates the data
+[**deletetasks**](TasksApi.md#deletetasks) | **DELETE** /tasks/{tasksId} | Delete the element
+[**getAlltasks**](TasksApi.md#getAlltasks) | **GET** /tasks/getAll | Get all the data
+[**gettasks**](TasksApi.md#gettasks) | **GET** /tasks/{tasksId} | Get the element
+[**updatetasks**](TasksApi.md#updatetasks) | **PUT** /tasks/{tasksId} | Updates the element
 
 
 
-## createmyprojects
+## createtasks
 
-> Myprojects createmyprojects(myprojects)
+> Tasks createtasks(tasks)
 
 Creates the data
 
@@ -23,9 +23,9 @@ Creates the data
 ```javascript
 import TempApi from 'temp_api';
 
-let apiInstance = new TempApi.MyprojectsApi();
-let myprojects = new TempApi.Myprojects(); // Myprojects | data to be created
-apiInstance.createmyprojects(myprojects, (error, data, response) => {
+let apiInstance = new TempApi.TasksApi();
+let tasks = new TempApi.Tasks(); // Tasks | data to be created
+apiInstance.createtasks(tasks, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -39,11 +39,11 @@ apiInstance.createmyprojects(myprojects, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **myprojects** | [**Myprojects**](Myprojects.md)| data to be created | 
+ **tasks** | [**Tasks**](Tasks.md)| data to be created | 
 
 ### Return type
 
-[**Myprojects**](Myprojects.md)
+[**Tasks**](Tasks.md)
 
 ### Authorization
 
@@ -55,9 +55,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## deletemyprojects
+## deletetasks
 
-> deletemyprojects(myprojectsId)
+> deletetasks(tasksId)
 
 Delete the element
 
@@ -66,9 +66,9 @@ Delete the element
 ```javascript
 import TempApi from 'temp_api';
 
-let apiInstance = new TempApi.MyprojectsApi();
-let myprojectsId = "myprojectsId_example"; // String | the Id parameter
-apiInstance.deletemyprojects(myprojectsId, (error, data, response) => {
+let apiInstance = new TempApi.TasksApi();
+let tasksId = "tasksId_example"; // String | the Id parameter
+apiInstance.deletetasks(tasksId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -82,7 +82,7 @@ apiInstance.deletemyprojects(myprojectsId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **myprojectsId** | **String**| the Id parameter | 
+ **tasksId** | **String**| the Id parameter | 
 
 ### Return type
 
@@ -98,9 +98,9 @@ No authorization required
 - **Accept**: Not defined
 
 
-## getAllmyprojects
+## getAlltasks
 
-> [Myprojects] getAllmyprojects()
+> [Tasks] getAlltasks()
 
 Get all the data
 
@@ -109,8 +109,8 @@ Get all the data
 ```javascript
 import TempApi from 'temp_api';
 
-let apiInstance = new TempApi.MyprojectsApi();
-apiInstance.getAllmyprojects((error, data, response) => {
+let apiInstance = new TempApi.TasksApi();
+apiInstance.getAlltasks((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -125,7 +125,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[Myprojects]**](Myprojects.md)
+[**[Tasks]**](Tasks.md)
 
 ### Authorization
 
@@ -137,9 +137,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## getmyprojects
+## gettasks
 
-> Myprojects getmyprojects(myprojectsId)
+> Tasks gettasks(tasksId)
 
 Get the element
 
@@ -148,9 +148,9 @@ Get the element
 ```javascript
 import TempApi from 'temp_api';
 
-let apiInstance = new TempApi.MyprojectsApi();
-let myprojectsId = "myprojectsId_example"; // String | the Id parameter
-apiInstance.getmyprojects(myprojectsId, (error, data, response) => {
+let apiInstance = new TempApi.TasksApi();
+let tasksId = "tasksId_example"; // String | the Id parameter
+apiInstance.gettasks(tasksId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -164,11 +164,11 @@ apiInstance.getmyprojects(myprojectsId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **myprojectsId** | **String**| the Id parameter | 
+ **tasksId** | **String**| the Id parameter | 
 
 ### Return type
 
-[**Myprojects**](Myprojects.md)
+[**Tasks**](Tasks.md)
 
 ### Authorization
 
@@ -180,9 +180,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## updatemyprojects
+## updatetasks
 
-> Myprojects updatemyprojects(myprojectsId, opts)
+> Tasks updatetasks(tasksId, opts)
 
 Updates the element
 
@@ -191,12 +191,12 @@ Updates the element
 ```javascript
 import TempApi from 'temp_api';
 
-let apiInstance = new TempApi.MyprojectsApi();
-let myprojectsId = "myprojectsId_example"; // String | the Id parameter
+let apiInstance = new TempApi.TasksApi();
+let tasksId = "tasksId_example"; // String | the Id parameter
 let opts = {
-  'myprojects': new TempApi.Myprojects() // Myprojects | data to be updated
+  'tasks': new TempApi.Tasks() // Tasks | data to be updated
 };
-apiInstance.updatemyprojects(myprojectsId, opts, (error, data, response) => {
+apiInstance.updatetasks(tasksId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -210,12 +210,12 @@ apiInstance.updatemyprojects(myprojectsId, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **myprojectsId** | **String**| the Id parameter | 
- **myprojects** | [**Myprojects**](Myprojects.md)| data to be updated | [optional] 
+ **tasksId** | **String**| the Id parameter | 
+ **tasks** | [**Tasks**](Tasks.md)| data to be updated | [optional] 
 
 ### Return type
 
-[**Myprojects**](Myprojects.md)
+[**Tasks**](Tasks.md)
 
 ### Authorization
 
