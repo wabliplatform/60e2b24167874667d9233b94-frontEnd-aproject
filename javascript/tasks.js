@@ -35,7 +35,7 @@ let apiTasksApi = new TempApi.TasksApi();import TempApi from '../src/index';wind
           subDataElements[i].textContent = data[data.length -i -1].vpms;
         }
        } catch (e) { console.log(e) };
-        
+        subDataElements[i].addEventListener('click',() => {{ location.href= '/viewtask/'+data[data.length -i -1]._id+'';}} )
       }
     });
     

@@ -9,6 +9,7 @@ module.exports = {
 	'home2' : './javascript/home2.js',
 	'tasks' : './javascript/tasks.js',
 	'cretetask' : './javascript/cretetask.js',
+	'viewtask' : './javascript/viewtask.js',
 },
   output: {
     path: path.resolve(__dirname, 'dist'),
