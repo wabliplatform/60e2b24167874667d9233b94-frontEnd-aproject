@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import MyprojectsPimage from './MyprojectsPimage';
 
 /**
  * The Myprojects model module.
@@ -22,7 +23,7 @@ class Myprojects {
     /**
      * Constructs a new <code>Myprojects</code>.
      * @alias module:model/Myprojects
-     * @param pimage {String} 
+     * @param pimage {module:model/MyprojectsPimage} 
      * @param ptitle {String} 
      * @param pstart {String} 
      * @param pend {String} 
@@ -69,7 +70,7 @@ class Myprojects {
                 obj['_id'] = ApiClient.convertToType(data['_id'], 'String');
             }
             if (data.hasOwnProperty('pimage')) {
-                obj['pimage'] = ApiClient.convertToType(data['pimage'], 'String');
+                obj['pimage'] = MyprojectsPimage.constructFromObject(data['pimage']);
             }
             if (data.hasOwnProperty('ptitle')) {
                 obj['ptitle'] = ApiClient.convertToType(data['ptitle'], 'String');
@@ -108,7 +109,7 @@ class Myprojects {
 Myprojects.prototype['_id'] = undefined;
 
 /**
- * @member {String} pimage
+ * @member {module:model/MyprojectsPimage} pimage
  */
 Myprojects.prototype['pimage'] = undefined;
 

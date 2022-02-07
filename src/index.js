@@ -14,6 +14,7 @@
 
 import ApiClient from './ApiClient';
 import Myprojects from './model/Myprojects';
+import MyprojectsPimage from './model/MyprojectsPimage';
 import Tasks from './model/Tasks';
 import MyprojectsApi from './api/MyprojectsApi';
 import TasksApi from './api/TasksApi';
@@ -64,6 +65,12 @@ export {
     Myprojects,
 
     /**
+     * The MyprojectsPimage model constructor.
+     * @property {module:model/MyprojectsPimage}
+     */
+    MyprojectsPimage,
+
+    /**
      * The Tasks model constructor.
      * @property {module:model/Tasks}
      */
@@ -94,6 +101,12 @@ export default {
      * @property {module:model/Myprojects}
      */
     Myprojects,
+
+    /**
+     * The MyprojectsPimage model constructor.
+     * @property {module:model/MyprojectsPimage}
+     */
+    MyprojectsPimage,
 
     /**
      * The Tasks model constructor.

@@ -7,124 +7,128 @@ let apiMyprojectsApi = new TempApi.MyprojectsApi();import TempApi from '../src/i
     if(subDataElements.length > i)
       {
         try { 
-        const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'pimage']");
-        if(insideSubDataElement !== null){
-          insideSubDataElement.src = data[data.length -i -1].pimage;
-        }
-        else if(subDataElements[i].getAttribute('annotationname') === 'pimage'){
-          subDataElements[i].src = data[data.length -i -1].pimage;
-        }
+      const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'pimage']");
+      if(insideSubDataElement !== null && data[data.length -i -1].pimage !== undefined){
+        insideSubDataElement.src = data[data.length -i -1].pimage.data;
+        insideSubDataElement.name = data[data.length -i -1].pimage.name;
+      }
+      else if(subDataElements[i].getAttribute('annotationname') === 'pimage' && data[data.length -i -1].pimage !== undefined){
+        subDataElements[i].src = data[data.length -i -1].pimage.data;
+        subDataElements[i].name = data[data.length -i -1].pimage.name;        
+      }
        } catch (e) { console.log(e) };try { 
-        const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'ptitle']");
-        if(insideSubDataElement !== null){
-          insideSubDataElement.textContent = data[data.length -i -1].ptitle;
-        }
-        else if(subDataElements[i].getAttribute('annotationname') === 'ptitle'){
-          subDataElements[i].textContent = data[data.length -i -1].ptitle;
-        }
-       } catch (e) { console.log(e) };try { 
-        const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'pstart']");
-        if(insideSubDataElement !== null){
-          insideSubDataElement.textContent = data[data.length -i -1].pstart;
-        }
-        else if(subDataElements[i].getAttribute('annotationname') === 'pstart'){
-          subDataElements[i].textContent = data[data.length -i -1].pstart;
-        }
-       } catch (e) { console.log(e) };
+      const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'ptitle']");
+      if(insideSubDataElement !== null){
+        insideSubDataElement.textContent = data[data.length -i -1].ptitle;
+        
+      }
+      else if(subDataElements[i].getAttribute('annotationname') === 'ptitle'){
+        subDataElements[i].textContent = data[data.length -i -1].ptitle;
+        
+      }
+     } catch (e) { console.log(e) };try { 
+      const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'pstart']");
+      if(insideSubDataElement !== null){
+        insideSubDataElement.textContent = data[data.length -i -1].pstart;
+        
+      }
+      else if(subDataElements[i].getAttribute('annotationname') === 'pstart'){
+        subDataElements[i].textContent = data[data.length -i -1].pstart;
+        
+      }
+     } catch (e) { console.log(e) };
         subDataElements[i].addEventListener('click',() => {{ location.href= '/view/'+data[data.length -i -1]._id+'';}} )
       }
     });
     
-    let numberOfPages = Math.ceil(data.length/subDataElements.length);
-    let pagination = document.querySelector('[pagination-list="true"]');
-    let chunk = 1;
+  let numberOfPages = Math.ceil(data.length/subDataElements.length);
+  let pagination = document.querySelector('[pagination-list="true"]');
+  let chunk = 1;
 
-      let paginationAttributes = [
-        "pagination-first",
-        "pagination-last",
-        "pagination-previous",
-        "pagination-next",
-      ];
+    let paginationAttributes = [
+      "pagination-first",
+      "pagination-last",
+      "pagination-previous",
+      "pagination-next",
+    ];
 
-      for (let i = 0; i < pagination.children.length; ) {
-        let foundAttr = false;
+    for (let i = 0; i < pagination.children.length; ) {
+      let foundAttr = false;
 
-        paginationAttributes.forEach((attr) => {
-          if (pagination.children[i].attributes.getNamedItem(attr) !== null) {
-            foundAttr = true;
-          }
-        });
-        if (foundAttr === false) {
-          pagination.removeChild(pagination.children[i]);
-        } else {
-          i++;
+      paginationAttributes.forEach((attr) => {
+        if (pagination.children[i].attributes.getNamedItem(attr) !== null) {
+          foundAttr = true;
         }
+      });
+      if (foundAttr === false) {
+        pagination.removeChild(pagination.children[i]);
+      } else {
+        i++;
       }
+    }
 
-      for (let i = 0; i < numberOfPages; i++) {
-        let child = document.createElement("li");
-        child.classList.add("page-item");
-        if (i === numberOfPages - 1) {
-          child.classList.add("active");
-        }
-        let insideChild = document.createElement("a");
-        insideChild.classList.add("page-link");
-        let textnode = document.createTextNode(numberOfPages - i);
-        insideChild.appendChild(textnode);
-        insideChild.setAttribute("href", "#!");
-        child.appendChild(insideChild);
-        child.onclick = function () {
-          if (chunk !== numberOfPages - i) {
-            chunk = numberOfPages - i;
-            onClickPaginationButton(chunk, pagination);
-          }
-        };
-
-        let numberOfFrontButtons =  findTypeOfPagination(pagination); 
-        pagination.insertBefore(child, pagination.children[numberOfFrontButtons]);
-
+    for (let i = 0; i < numberOfPages; i++) {
+      let child = document.createElement("li");
+      child.classList.add("page-item");
+      if (i === numberOfPages - 1) {
+        child.classList.add("active");
       }
-
-      for (let i = 0; i < pagination.children.length; i++) {
-        let child = pagination.children[i];
-        if ( child.getAttribute("pagination-first") === "true" && numberOfPages > 0 ) {
-          child.onclick = function () {
-            if(chunk !== 1){
-              chunk = 1;
-              onClickPaginationButton(1, pagination);
-            }
-          };
-        }
-
-        if ( child.getAttribute( "pagination-last" ) === "true" && numberOfPages > 0 ) {
-          child.onclick = function () {
-            if(chunk !== numberOfPages){
-              chunk = numberOfPages;
-              onClickPaginationButton( numberOfPages, pagination);
-            }
-          };
-        }
-
-        if ( child.getAttribute("pagination-previous") === "true" && numberOfPages > 0 ) {
-          child.onclick = function () {
-            if(chunk !== returnChunkIndex(chunk,numberOfPages,'-')){
-              chunk = returnChunkIndex(chunk,numberOfPages,'-');
-              onClickPaginationButton(chunk, pagination);
-            }
-          };
-        }
-
-        if ( child.getAttribute("pagination-next") === "true" && numberOfPages > 0) {
-          child.onclick = function () {
-            if(chunk !== returnChunkIndex(chunk,numberOfPages,'+')){
-              chunk = returnChunkIndex(chunk,numberOfPages,'+');
-              onClickPaginationButton(chunk, pagination);
-            }
-          };
+      let insideChild = document.createElement("a");
+      insideChild.classList.add("page-link");
+      let textnode = document.createTextNode(numberOfPages - i);
+      insideChild.appendChild(textnode);
+      insideChild.setAttribute("href", "#!");
+      child.appendChild(insideChild);
+      child.onclick = function () {
+        if (chunk !== numberOfPages - i) {
+          chunk = numberOfPages - i;
+          onClickPaginationButton(chunk, pagination);
         }
       };
 
-  
+      let numberOfFrontButtons =  findTypeOfPagination(pagination);
+      pagination.insertBefore(child, pagination.children[numberOfFrontButtons]);
+
+    }
+
+    for (let i = 0; i < pagination.children.length; i++) {
+      let child = pagination.children[i];
+      if ( child.getAttribute("pagination-first") === "true" && numberOfPages > 0 ) {
+        child.onclick = function () {
+          if(chunk !== 1){
+            chunk = 1;
+            onClickPaginationButton(1, pagination);
+          }
+        };
+      }
+
+      if ( child.getAttribute( "pagination-last" ) === "true" && numberOfPages > 0 ) {
+        child.onclick = function () {
+          if(chunk !== numberOfPages){
+            chunk = numberOfPages;
+            onClickPaginationButton( numberOfPages, pagination);
+          }
+        };
+      }
+
+      if ( child.getAttribute("pagination-previous") === "true" && numberOfPages > 0 ) {
+        child.onclick = function () {
+          if(chunk !== returnChunkIndex(chunk,numberOfPages,'-')){
+            chunk = returnChunkIndex(chunk,numberOfPages,'-');
+            onClickPaginationButton(chunk, pagination);
+          }
+        };
+      }
+
+      if ( child.getAttribute("pagination-next") === "true" && numberOfPages > 0) {
+        child.onclick = function () {
+          if(chunk !== returnChunkIndex(chunk,numberOfPages,'+')){
+            chunk = returnChunkIndex(chunk,numberOfPages,'+');
+            onClickPaginationButton(chunk, pagination);
+          }
+        };
+      }
+    };
     [...subDataElements].forEach((element,index) => {if(index >= data.length) subDataElements[index].style.display = 'none';})}});};const onClickPaginationButton = (chunk, pagination) => {
     for (let i = 0; i < pagination.children.length; i++) {
       if (
@@ -151,21 +155,22 @@ let apiMyprojectsApi = new TempApi.MyprojectsApi();import TempApi from '../src/i
 
         if(data.length - chunk*subDataElements.length <= revertIndex && revertIndex < data.length - (chunk-1)*subDataElements.length){
             try { 
-    const insideSubDataElement = subDataElements[i-(chunk-1 )*subDataElements.length].querySelector("[annotationname = 'pimage']");
-    if(insideSubDataElement !== null){
-      insideSubDataElement.src = data[revertIndex].pimage;
-    }
-   } catch (e) { console.log(e) };try { 
-    const insideSubDataElement = subDataElements[i-(chunk-1 )*subDataElements.length].querySelector("[annotationname = 'ptitle']");
-    if(insideSubDataElement !== null){
-      insideSubDataElement.textContent = data[revertIndex].ptitle;
-    }
-   } catch (e) { console.log(e) };try { 
-    const insideSubDataElement = subDataElements[i-(chunk-1 )*subDataElements.length].querySelector("[annotationname = 'pstart']");
-    if(insideSubDataElement !== null){
-      insideSubDataElement.textContent = data[revertIndex].pstart;
-    }
-   } catch (e) { console.log(e) };
+      const insideSubDataElement = subDataElements[i-(chunk-1 )*subDataElements.length].querySelector("[annotationname = 'pimage']");
+      if(insideSubDataElement !== null && data[revertIndex].pimage !== undefined){
+        insideSubDataElement.src = data[revertIndex].pimage.data;
+        insideSubDataElement.name = data[revertIndex].pimage.name;
+      }
+       } catch (e) { console.log(e) };try { 
+        const insideSubDataElement = subDataElements[i-(chunk-1 )*subDataElements.length].querySelector("[annotationname = 'ptitle']");
+        if(insideSubDataElement !== null){
+          insideSubDataElement.textContent = data[revertIndex].ptitle;
+        }
+       } catch (e) { console.log(e) };try { 
+        const insideSubDataElement = subDataElements[i-(chunk-1 )*subDataElements.length].querySelector("[annotationname = 'pstart']");
+        if(insideSubDataElement !== null){
+          insideSubDataElement.textContent = data[revertIndex].pstart;
+        }
+       } catch (e) { console.log(e) };
         }
     })
     }});}

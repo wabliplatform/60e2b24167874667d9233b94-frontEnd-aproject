@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
-**pimage** | **String** |  | 
+**pimage** | [**MyprojectsPimage**](MyprojectsPimage.md) |  | 
 **ptitle** | **String** |  | 
 **pstart** | **String** |  | 
 **pend** | **String** |  | 

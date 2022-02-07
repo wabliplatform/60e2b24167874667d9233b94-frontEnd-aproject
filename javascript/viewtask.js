@@ -9,14 +9,16 @@ let apiTasksApi = new TempApi.TasksApi();import TempApi from '../src/index';docu
     if(subDataElements.length > i)
       {
         try { 
-        const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'tname']");
-        if(insideSubDataElement !== null){
-          insideSubDataElement.textContent = data[data.length -i -1].tname;
-        }
-        else if(subDataElements[i].getAttribute('annotationname') === 'tname'){
-          subDataElements[i].textContent = data[data.length -i -1].tname;
-        }
-       } catch (e) { console.log(e) };
+      const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'tname']");
+      if(insideSubDataElement !== null){
+        insideSubDataElement.textContent = data[data.length -i -1].tname;
+        
+      }
+      else if(subDataElements[i].getAttribute('annotationname') === 'tname'){
+        subDataElements[i].textContent = data[data.length -i -1].tname;
+        
+      }
+     } catch (e) { console.log(e) };
         subDataElements[i].addEventListener('click',() => {{ location.href= '/viewtask/'+data[data.length -i -1]._id+'';}} )
       }
     });
