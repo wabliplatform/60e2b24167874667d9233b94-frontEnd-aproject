@@ -22,15 +22,15 @@ class Tasks {
     /**
      * Constructs a new <code>Tasks</code>.
      * @alias module:model/Tasks
+     * @param tname {String} 
      * @param sdate {Number} 
      * @param edate {Number} 
-     * @param tname {String} 
      * @param vpms {Number} 
      * @param tdescription {String} 
      */
-    constructor(sdate, edate, tname, vpms, tdescription) { 
+    constructor(tname, sdate, edate, vpms, tdescription) { 
         
-        Tasks.initialize(this, sdate, edate, tname, vpms, tdescription);
+        Tasks.initialize(this, tname, sdate, edate, vpms, tdescription);
     }
 
     /**
@@ -38,10 +38,10 @@ class Tasks {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, sdate, edate, tname, vpms, tdescription) { 
+    static initialize(obj, tname, sdate, edate, vpms, tdescription) { 
+        obj['tname'] = tname;
         obj['sdate'] = sdate;
         obj['edate'] = edate;
-        obj['tname'] = tname;
         obj['vpms'] = vpms;
         obj['tdescription'] = tdescription;
     }
@@ -60,14 +60,14 @@ class Tasks {
             if (data.hasOwnProperty('_id')) {
                 obj['_id'] = ApiClient.convertToType(data['_id'], 'String');
             }
+            if (data.hasOwnProperty('tname')) {
+                obj['tname'] = ApiClient.convertToType(data['tname'], 'String');
+            }
             if (data.hasOwnProperty('sdate')) {
                 obj['sdate'] = ApiClient.convertToType(data['sdate'], 'Number');
             }
             if (data.hasOwnProperty('edate')) {
                 obj['edate'] = ApiClient.convertToType(data['edate'], 'Number');
-            }
-            if (data.hasOwnProperty('tname')) {
-                obj['tname'] = ApiClient.convertToType(data['tname'], 'String');
             }
             if (data.hasOwnProperty('vpms')) {
                 obj['vpms'] = ApiClient.convertToType(data['vpms'], 'Number');
@@ -88,6 +88,11 @@ class Tasks {
 Tasks.prototype['_id'] = undefined;
 
 /**
+ * @member {String} tname
+ */
+Tasks.prototype['tname'] = undefined;
+
+/**
  * @member {Number} sdate
  */
 Tasks.prototype['sdate'] = undefined;
@@ -96,11 +101,6 @@ Tasks.prototype['sdate'] = undefined;
  * @member {Number} edate
  */
 Tasks.prototype['edate'] = undefined;
-
-/**
- * @member {String} tname
- */
-Tasks.prototype['tname'] = undefined;
 
 /**
  * @member {Number} vpms
