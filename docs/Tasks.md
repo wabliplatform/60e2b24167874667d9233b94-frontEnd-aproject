@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
-**tname** | **String** |  | 
 **sdate** | **Number** |  | 
 **edate** | **Number** |  | 
+**tname** | **String** |  | 
 **vpms** | **Number** |  | 
 **tdescription** | **String** |  | 
 

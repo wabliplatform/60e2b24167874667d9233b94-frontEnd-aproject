@@ -60,12 +60,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property tname (base name: "tname")', function() {
-      // uncomment below and update the code to test the property tname
-      //var instance = new TempApi.Tasks();
-      //expect(instance).to.be();
-    });
-
     it('should have the property sdate (base name: "sdate")', function() {
       // uncomment below and update the code to test the property sdate
       //var instance = new TempApi.Tasks();
@@ -74,6 +68,12 @@
 
     it('should have the property edate (base name: "edate")', function() {
       // uncomment below and update the code to test the property edate
+      //var instance = new TempApi.Tasks();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tname (base name: "tname")', function() {
+      // uncomment below and update the code to test the property tname
       //var instance = new TempApi.Tasks();
       //expect(instance).to.be();
     });
