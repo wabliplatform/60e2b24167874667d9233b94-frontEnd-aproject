@@ -1,6 +1,6 @@
 # TempApi.TasksApi
 
-All URIs are relative to *http://127.0.0.1:8080/v1*
+All URIs are relative to *http://83.212.100.226:3001/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
