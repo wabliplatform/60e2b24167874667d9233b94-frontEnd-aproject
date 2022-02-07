@@ -4,7 +4,7 @@ let apiTasksApi = new TempApi.TasksApi();import TempApi from '../src/index';docu
     event.preventDefault();
     { window.document.location = '#!';}};document.getElementById('ihn45').onclick = (event) => {
     event.preventDefault();
-    { window.document.location = '#!';}};window.onload = () => {let tasksId = window.location.pathname.replace('/viewtask/','');apiTasksApi.gettasks( tasksId, (error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); document.querySelector('[annotationname = tname]').textContent = response.body.query.tname ;document.querySelector('[annotationname = sdate]').textContent = response.body.query.sdate ;document.querySelector('[annotationname = edate]').textContent = response.body.query.edate ;document.querySelector('[annotationname = vpms]').textContent = response.body.query.vpms ;document.querySelector('[annotationname = tdescription]').textContent = response.body.query.tdescription ;}});};window.onload = () => {apiTasksApi.getAlltasks((error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const subDataElements = document.getElementById("iihan").querySelectorAll( "[dataitem='true']" );
+    { window.document.location = '#!';}};window.onload = () => {apiTasksApi.getAlltasks((error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const subDataElements = document.getElementById("iihan").querySelectorAll( "[dataitem='true']" );
   data.forEach((item,i) => {
     if(subDataElements.length > i)
       {
