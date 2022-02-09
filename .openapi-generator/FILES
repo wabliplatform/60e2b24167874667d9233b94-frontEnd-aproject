@@ -1,5 +1,6 @@
 .babelrc
 .gitignore
+.openapi-generator-ignore
 .travis.yml
 README.md
 config.js
@@ -22,4 +23,9 @@ src/index.js
 src/model/Myprojects.js
 src/model/MyprojectsPimage.js
 src/model/Tasks.js
+test/api/MyprojectsApi.spec.js
+test/api/TasksApi.spec.js
+test/model/Myprojects.spec.js
+test/model/MyprojectsPimage.spec.js
+test/model/Tasks.spec.js
 webpack.config.js
