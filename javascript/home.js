@@ -1,8 +1,98 @@
-let apiMyprojectsApi = new TempApi.MyprojectsApi();import TempApi from '../src/index';document.getElementById('isxfl').onclick = (event) => {
+let apiMyprojectsApi = new TempApi.MyprojectsApi();import TempApi from '../src/index';document.getElementById('iolui').onclick = (event) => {
     event.preventDefault();
-    { window.document.location = '#!';}};document.getElementById('iolui').onclick = (event) => {
-    event.preventDefault();
-    { window.open('/create',"_blank", 'width=600, height=600, location=yes');}};window.onload = () => {apiMyprojectsApi.getAllmyprojects((error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const subDataElements = document.getElementById("in3ic").querySelectorAll( "[dataitem='true']" );
+    { window.open('/create',"_blank", 'width=600, height=600, location=yes');}};const onClickPaginationButton = (chunk, pagination) => {
+    for (let i = 0; i < pagination.children.length; i++) {
+      if (
+        pagination.children[i].classList.value.includes("active") === true
+      ) {
+        pagination.children[i].classList.remove("active");
+      }
+    }
+
+    let numberOfFrontButtons =  findTypeOfPagination(pagination); 
+    pagination.children[chunk+numberOfFrontButtons-1].classList.add("active");
+
+  apiMyprojectsApi.getAllmyprojects((error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const subDataElements = document.getElementById("in3ic").querySelectorAll( "[dataitem='true']" );
+[...subDataElements].forEach((element, index) => {
+        if (index >= data.length - (chunk-1)*subDataElements.length) {
+            subDataElements[index].style.display = 'none';
+        }
+        else {
+            subDataElements[index].style.display = "";
+        }
+      });data.forEach((item, i) => {
+
+        let revertIndex = data.length - i -1;
+
+        if(data.length - chunk*subDataElements.length <= revertIndex && revertIndex < data.length - (chunk-1)*subDataElements.length){
+            try { 
+      const insideSubDataElement = subDataElements[i-(chunk-1 )*subDataElements.length].querySelector("[annotationname = 'pimage']");
+      if(insideSubDataElement !== null && data[revertIndex].pimage !== undefined){
+        insideSubDataElement.src = data[revertIndex].pimage.data;
+        insideSubDataElement.name = data[revertIndex].pimage.name;
+      }
+       } catch (e) { console.log(e) };try { 
+        const insideSubDataElement = subDataElements[i-(chunk-1 )*subDataElements.length].querySelector("[annotationname = 'ptitle']");
+        if(insideSubDataElement !== null){
+          insideSubDataElement.textContent = data[revertIndex].ptitle;
+        }
+       } catch (e) { console.log(e) };try { 
+        const insideSubDataElement = subDataElements[i-(chunk-1 )*subDataElements.length].querySelector("[annotationname = 'pstart']");
+        if(insideSubDataElement !== null){
+          insideSubDataElement.textContent = data[revertIndex].pstart;
+        }
+       } catch (e) { console.log(e) };
+        }
+    })
+    }});}
+
+    const findTypeOfPagination = (pagination) => {
+
+      let firstChild = pagination.children[0];
+      let secondChild = pagination.children[1];
+    
+      if (
+        (firstChild.attributes.getNamedItem("pagination-first") !== null ||
+          firstChild.attributes.getNamedItem("pagination-previous") !== null) &&
+        (secondChild.attributes.getNamedItem("pagination-first") !== null ||
+          secondChild.attributes.getNamedItem("pagination-previous") !== null)
+      ) {
+        return 2;
+      } else if  (
+        (firstChild.attributes.getNamedItem("pagination-first") !== null ||
+          firstChild.attributes.getNamedItem("pagination-previous") !== null) ||
+        (secondChild.attributes.getNamedItem("pagination-first") !== null ||
+          secondChild.attributes.getNamedItem("pagination-previous") !== null)
+      ) {
+        return 1;
+      }
+      else{
+        return 0;
+      }
+    
+    }
+  
+
+    const returnChunkIndex = (chunk, numberOfPages, cause) => {
+
+      if(cause === '+'){
+        if(chunk < numberOfPages){
+          return chunk + 1;
+        }
+        else{
+          return chunk;
+        }
+      }
+      else if(cause === '-'){
+        if(chunk > 2){
+          return chunk - 1;
+        }
+        else{
+          return 1;
+        }
+      }
+    }
+  window.onload = () => {apiMyprojectsApi.getAllmyprojects((error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const subDataElements = document.getElementById("in3ic").querySelectorAll( "[dataitem='true']" );
   data.forEach((item,i) => {
     if(subDataElements.length > i)
       {
@@ -14,7 +104,7 @@ let apiMyprojectsApi = new TempApi.MyprojectsApi();import TempApi from '../src/i
       }
       else if(subDataElements[i].getAttribute('annotationname') === 'pimage' && data[data.length -i -1].pimage !== undefined){
         subDataElements[i].src = data[data.length -i -1].pimage.data;
-        subDataElements[i].name = data[data.length -i -1].pimage.name;        
+        subDataElements[i].name = data[data.length -i -1].pimage.name;
       }
        } catch (e) { console.log(e) };try { 
       const insideSubDataElement = subDataElements[i].querySelector("[annotationname = 'ptitle']");
@@ -129,96 +219,4 @@ let apiMyprojectsApi = new TempApi.MyprojectsApi();import TempApi from '../src/i
         };
       }
     };
-    [...subDataElements].forEach((element,index) => {if(index >= data.length) subDataElements[index].style.display = 'none';})}});};const onClickPaginationButton = (chunk, pagination) => {
-    for (let i = 0; i < pagination.children.length; i++) {
-      if (
-        pagination.children[i].classList.value.includes("active") === true
-      ) {
-        pagination.children[i].classList.remove("active");
-      }
-    }
-
-    let numberOfFrontButtons =  findTypeOfPagination(pagination); 
-    pagination.children[chunk+numberOfFrontButtons-1].classList.add("active");
-
-  apiMyprojectsApi.getAllmyprojects((error, data, response) => { if (error) {console.error(error);} else { console.log('API called successfully. Returned data: ' + data); const subDataElements = document.getElementById("in3ic").querySelectorAll( "[dataitem='true']" );
-[...subDataElements].forEach((element, index) => {
-        if (index >= data.length - (chunk-1)*subDataElements.length) {
-            subDataElements[index].style.display = 'none';
-        }
-        else {
-            subDataElements[index].style.display = "";
-        }
-      });data.forEach((item, i) => {
-
-        let revertIndex = data.length - i -1;
-
-        if(data.length - chunk*subDataElements.length <= revertIndex && revertIndex < data.length - (chunk-1)*subDataElements.length){
-            try { 
-      const insideSubDataElement = subDataElements[i-(chunk-1 )*subDataElements.length].querySelector("[annotationname = 'pimage']");
-      if(insideSubDataElement !== null && data[revertIndex].pimage !== undefined){
-        insideSubDataElement.src = data[revertIndex].pimage.data;
-        insideSubDataElement.name = data[revertIndex].pimage.name;
-      }
-       } catch (e) { console.log(e) };try { 
-        const insideSubDataElement = subDataElements[i-(chunk-1 )*subDataElements.length].querySelector("[annotationname = 'ptitle']");
-        if(insideSubDataElement !== null){
-          insideSubDataElement.textContent = data[revertIndex].ptitle;
-        }
-       } catch (e) { console.log(e) };try { 
-        const insideSubDataElement = subDataElements[i-(chunk-1 )*subDataElements.length].querySelector("[annotationname = 'pstart']");
-        if(insideSubDataElement !== null){
-          insideSubDataElement.textContent = data[revertIndex].pstart;
-        }
-       } catch (e) { console.log(e) };
-        }
-    })
-    }});}
-
-    const findTypeOfPagination = (pagination) => {
-
-      let firstChild = pagination.children[0];
-      let secondChild = pagination.children[1];
-    
-      if (
-        (firstChild.attributes.getNamedItem("pagination-first") !== null ||
-          firstChild.attributes.getNamedItem("pagination-previous") !== null) &&
-        (secondChild.attributes.getNamedItem("pagination-first") !== null ||
-          secondChild.attributes.getNamedItem("pagination-previous") !== null)
-      ) {
-        return 2;
-      } else if  (
-        (firstChild.attributes.getNamedItem("pagination-first") !== null ||
-          firstChild.attributes.getNamedItem("pagination-previous") !== null) ||
-        (secondChild.attributes.getNamedItem("pagination-first") !== null ||
-          secondChild.attributes.getNamedItem("pagination-previous") !== null)
-      ) {
-        return 1;
-      }
-      else{
-        return 0;
-      }
-    
-    }
-  
-
-    const returnChunkIndex = (chunk, numberOfPages, cause) => {
-
-      if(cause === '+'){
-        if(chunk < numberOfPages){
-          return chunk + 1;
-        }
-        else{
-          return chunk;
-        }
-      }
-      else if(cause === '-'){
-        if(chunk > 2){
-          return chunk - 1;
-        }
-        else{
-          return 1;
-        }
-      }
-    }
-  
+    [...subDataElements].forEach((element,index) => {if(index >= data.length) subDataElements[index].style.display = 'none';})}});};
